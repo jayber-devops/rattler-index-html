@@ -94,10 +94,10 @@
             return {...acc, ...subdir};
         }, {});
         let pkgData = {
-            "subdirs": Object.keys(packages_by_subdir).filter(key => packages_by_subdir[key]),
+            "subdirs": Object.keys(packages_by_subdir)
+                             .filter(key => Array.isArray(packages_by_subdir[key]) && packages_by_subdir[key].length > 0),
             "packages": packages_by_subdir,
         }
-        console.log(pkgData);
         return pkgData;
     };
 </script>
