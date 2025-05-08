@@ -43,6 +43,7 @@
   </style>
   <script src="https://unpkg.com/alpinejs" defer></script>
   <script>
+    const SUBDIRS = ['linux-64', 'osx-64', 'osx-arm64', 'win-64', 'noarch'];
     const flattenRepodata = (data) => {
         const flattenPackages = (packages) => {
             return Object.entries(packages).map(kvp => {
@@ -56,41 +57,55 @@
     }
 
     let fetchPkgs = async () => {
-        let subdirs = ['linux-64', 'osx-64', 'osx-arm64', 'win-64', 'noarch'];
-        let promises = subdirs.map(subdir => 
+        let promises = SUBDIRS.map(subdir => 
             fetch(`${subdir}/repodata.json`)
                 .then(response => response.text())
                 .then(data => JSON.parse(data))
-                .then(flattenRepodata)
+                .then(data => ({ [subdir]: flattenRepodata(data) }))
                 .catch(() => {
                     console.log(`Failed to fetch data for subdir: ${subdir}`);
-                    return [];
+                    return {};
                 })
         );
         let results = await Promise.all(promises);
-        return results.flat();
+        let packages_by_subdir = results.reduce((acc, subdir) => {
+            return {...acc, ...subdir};
+        }, {});
+        let pkgData = {
+            "subdirs": Object.keys(packages_by_subdir).filter(key => packages_by_subdir[key]),
+            "packages": packages_by_subdir,
+        }
+        console.log(pkgData);
+        return pkgData;
     };
 </script>
 </head>
 <body>
-  <h2>rattler-index</h2>
-  <table x-data="{ pkgs: [] }" x-init="pkgs = await fetchPkgs()">
-    <tr>
-      <th>Filename</th>
-      <th>Size</th>
-      <th>Last Modified</th>
-      <th>SHA256</th>
-      <th>MD5</th>
-    </tr>
-    <template x-for="pkg in pkgs">
-    <tr>
-      <td><a :href="`${pkg.subdir}/${pkg.filename}`" x-text="pkg.filename"></a></td>
-      <td class="s" x-text="(pkg.size / (1024 * 1024)).toFixed(2) + ' MB'"></td>
-      <td x-text="new Date(pkg.timestamp).toLocaleString()"></td>
-      <td x-text="pkg.sha256"></td>
-      <td x-text="pkg.md5">{</td>
-    </tr>
-    </template>
-  </table>
+  <h1>rattler-index</h1>
+  <div x-data="{ pkgData: {} }" x-init="pkgData = await fetchPkgs()">
+  <template x-for="subdir in pkgData.subdirs">
+    <div class="subdir" x-bind:id="subdir">
+    <h2 x-text="subdir"></h2>
+    <table>
+      <tr>
+        <th>Filename</th>
+        <th>Size</th>
+        <th>Last Modified</th>
+        <th>SHA256</th>
+        <th>MD5</th>
+      </tr>
+      <template x-for="pkg in pkgData.packages[subdir]">
+      <tr>
+        <td><a :href="`${subdir}/${pkg.filename}`" x-text="pkg.filename"></a></td>
+        <td class="s" x-text="(pkg.size / (1024 * 1024)).toFixed(2) + ' MB'"></td>
+        <td x-text="new Date(pkg.timestamp).toLocaleString()"></td>
+        <td x-text="pkg.sha256"></td>
+        <td x-text="pkg.md5"></td>
+      </tr>
+      </template>
+    </table>
+    </div>
+  </template>
+  </div>
 </body>
 </html>
