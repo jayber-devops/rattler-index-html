@@ -78,7 +78,7 @@
             });
     }
 
-    let fetchPkgs = async () => {
+    const fetchPkgs = async () => {
         let promises = SUBDIRS.map(subdir => 
             fetch(`${subdir}/repodata.json`)
                 .then(response => response.text())
@@ -100,6 +100,17 @@
         }
         return pkgData;
     };
+
+    const tplPkgSummary = (pkg) => {
+        let title = [pkg.name ?? '', pkg.version ?? '', pkg.build ?? ''].filter(i => i).join(' ');
+        if (Array.isArray(pkg.depends)) {
+            title += `\n\nDependencies:\n${pkg.depends.map(dep => `- ${dep}`).join('\n')}`;
+        }
+        return title;
+    };
+
+    const tplPkgSize = (pkg) => `${((pkg.size ?? 0) / (1024 * 1024)).toFixed(2)} MB`;
+    const tplPkgTimestamp = (pkg) => `${pkg.timestamp ? new Date(pkg.timestamp).toLocaleString() : ''}`;
 </script>
 </head>
 <body>
@@ -118,9 +129,9 @@
       </tr>
       <template x-for="pkg in pkgData.packages[subdir]">
       <tr>
-        <td><a :href="`${subdir}/${pkg.filename}`" x-text="pkg.filename"></a></td>
-        <td class="s" x-text="(pkg.size / (1024 * 1024)).toFixed(2) + ' MB'"></td>
-        <td x-text="new Date(pkg.timestamp).toLocaleString()"></td>
+        <td><a :title="tplPkgSummary(pkg)" :href="`${subdir}/${pkg.filename}`" x-text="pkg.filename"></a></td>
+        <td class="s" x-text="tplPkgSize(pkg)"></td>
+        <td x-text="tplPkgTimestamp(pkg)"></td>
         <td x-text="pkg.sha256"></td>
         <td x-text="pkg.md5"></td>
       </tr>
