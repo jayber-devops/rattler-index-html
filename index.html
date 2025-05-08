@@ -53,7 +53,29 @@
                 return value;
             });
         };
-        return [...flattenPackages(data['packages.conda'] || {}), ...flattenPackages(data['packages'] || {})];
+        return [...flattenPackages(data['packages.conda'] || {}), ...flattenPackages(data['packages'] || {})]
+            .sort((a, b) => {
+              const compare = (key, desc = false, numeric = false) => {
+                const aValue = a[key] || '';
+                const bValue = b[key] || '';
+                if (numeric) {
+                  return desc ? (bValue - aValue) : (aValue - bValue);
+                }
+                if (numeric) {
+                  const aNum = parseFloat(aValue) || 0;
+                  const bNum = parseFloat(bValue) || 0;
+                  return desc ? (bNum - aNum) : (aNum - bNum);
+                }
+                return desc ? bValue.localeCompare(aValue, undefined, { numeric: true }) : aValue.localeCompare(bValue, undefined, { numeric: true });
+              };
+
+              return (
+                compare('name') ||
+                compare('version', true, true) ||
+                compare('build_number', true, true) ||
+                compare('build', true, false)
+              );
+            });
     }
 
     let fetchPkgs = async () => {
