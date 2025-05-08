@@ -1,0 +1,129 @@
+{
+    "info": {
+        "subdir": "linux-64"
+    },
+    "packages": {},
+    "packages.conda": {
+        "geodatascience-25.4.1-py39_10.conda": {
+            "arch": "x86_64",
+            "build": "py39_10",
+            "build_number": 10,
+            "depends": [
+                "matplotlib",
+                "matplotlib-inline",
+                "numpy >=2.2.0,<3",
+                "pandas >=2.0.0,<2.3.0",
+                "pyarrow >=16,<20",
+                "pydantic >=2.8.2,<3",
+                "requests >=2.32.3,<3",
+                "urllib3 >=2,<3"
+            ],
+            "license": "Unlicense",
+            "md5": "b7f6c9d1e4f5a7b8c6d8e4f5a7b8c6d8",
+            "name": "arcgis",
+            "platform": "linux",
+            "sha256": "e28d0838214c781bd13a312edd575fba75d9df7a2b538e6dfdacae1486e11ead",
+            "size": 922928,
+            "subdir": "linux-64",
+            "timestamp": 1746187802126,
+            "version": "25.4.1"
+        },
+        "geodatascience-25.4.1-py310_10.conda": {
+            "arch": "x86_64",
+            "build": "py310_10",
+            "build_number": 10,
+            "depends": [
+                "matplotlib",
+                "matplotlib-inline",
+                "numpy >=2.2.0,<3",
+                "pandas >=2.0.0,<2.3.0",
+                "pyarrow >=16,<20",
+                "pydantic >=2.8.2,<3",
+                "requests >=2.32.3,<3",
+                "urllib3 >=2,<3"
+            ],
+            "license": "Unlicense",
+            "md5": "b7f6c9d1e4f5a7b8c6d8e4f5a7b8c6d8",
+            "name": "arcgis",
+            "platform": "linux",
+            "sha256": "e28d0838214c781bd13a312edd575fba75d9df7a2b538e6dfdacae1486e11ead",
+            "size": 922928,
+            "subdir": "linux-64",
+            "timestamp": 1746187802126,
+            "version": "25.4.1"
+        },
+        "geodatascience-25.4.1-py311_10.conda": {
+            "arch": "x86_64",
+            "build": "py311_10",
+            "build_number": 10,
+            "depends": [
+                "matplotlib",
+                "matplotlib-inline",
+                "numpy >=2.2.0,<3",
+                "pandas >=2.0.0,<2.3.0",
+                "pyarrow >=16,<20",
+                "pydantic >=2.8.2,<3",
+                "requests >=2.32.3,<3",
+                "urllib3 >=2,<3"
+            ],
+            "license": "Unlicense",
+            "md5": "b7f6c9d1e4f5a7b8c6d8e4f5a7b8c6d8",
+            "name": "arcgis",
+            "platform": "linux",
+            "sha256": "e28d0838214c781bd13a312edd575fba75d9df7a2b538e6dfdacae1486e11ead",
+            "size": 922928,
+            "subdir": "linux-64",
+            "timestamp": 1746187802126,
+            "version": "25.4.1"
+        },
+        "geodatascience-25.4.1-py312_10.conda": {
+            "arch": "x86_64",
+            "build": "py312_10",
+            "build_number": 10,
+            "depends": [
+                "matplotlib",
+                "matplotlib-inline",
+                "numpy >=2.2.0,<3",
+                "pandas >=2.0.0,<2.3.0",
+                "pyarrow >=16,<20",
+                "pydantic >=2.8.2,<3",
+                "requests >=2.32.3,<3",
+                "urllib3 >=2,<3"
+            ],
+            "license": "Unlicense",
+            "md5": "b7f6c9d1e4f5a7b8c6d8e4f5a7b8c6d8",
+            "name": "arcgis",
+            "platform": "linux",
+            "sha256": "e28d0838214c781bd13a312edd575fba75d9df7a2b538e6dfdacae1486e11ead",
+            "size": 922928,
+            "subdir": "linux-64",
+            "timestamp": 1746187802126,
+            "version": "25.4.1"
+        },
+        "geodatascience-25.4.1-py313_10.conda": {
+            "arch": "x86_64",
+            "build": "py313_10",
+            "build_number": 10,
+            "depends": [                
+                "matplotlib",
+                "matplotlib-inline",
+                "numpy >=2.2.0,<3",
+                "pandas >=2.0.0,<2.3.0",
+                "pyarrow >=16,<20",
+                "pydantic >=2.8.2,<3",
+                "requests >=2.32.3,<3",
+                "urllib3 >=2,<3"
+            ],
+            "license": "Unlicense",
+            "md5": "610466b581b10e1d316188e248c2693b",
+            "name": "arcgis",
+            "platform": "linux",
+            "sha256": "e28d0838214c781bd13a312edd575fba75d9df7a2b538e6dfdacae1486e11ead",
+            "size": 922928,
+            "subdir": "linux-64",
+            "timestamp": 1746187802126,
+            "version": "25.4.1"
+        }
+    },
+    "repodata_version": 2
+}

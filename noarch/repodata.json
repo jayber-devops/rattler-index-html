@@ -1,0 +1,25 @@
+{
+    "info": {
+        "subdir": "noarch"
+    },
+    "packages": {},
+    "packages.conda": {
+        "mappylib-25.4.1_10.conda": {
+            "arch": "noarch",
+            "build": "10",
+            "build_number": 10,
+            "depends": [
+                "geodatascience >=25.4.1,<26"
+            ],
+            "license": "Unlicense",
+            "md5": "b7f6c9d1e4f5a7b8c6d8e4f5a7b8c6d8",
+            "name": "mappylib",
+            "platform": "noarch",
+            "sha256": "e28d0838214c781bd13a312edd575fba75d9df7a2b538e6dfdacae1486e11ead",
+            "size": 922928,
+            "subdir": "noarch",
+            "timestamp": 1746187802126,
+            "version": "25.4.1"
+        }
+    }
+}

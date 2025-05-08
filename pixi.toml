@@ -1,0 +1,15 @@
+[workspace]
+authors = ["Jay Roebuck <jroebuck@esri.com>"]
+channels = ["conda-forge"]
+name = "rattler-index-html"
+description = "A simple HTML index for conda packages"
+license = "BSD-3-Clause"
+repository = "https://github.com/jayber-devops/rattler-index-html"
+platforms = ["osx-arm64", "linux-64", "win-64"]
+version = "0.1.0"
+
+[tasks]
+serve = "python -m http.server"
+
+[dependencies]
+"python" = "~=3.13"
