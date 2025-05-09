@@ -44,6 +44,7 @@
   <script src="//unpkg.com/alpinejs" defer></script>
   <script>
     const SUBDIRS = ['linux-64', 'osx-64', 'osx-arm64', 'win-64', 'noarch'];
+    const LABEL_URL = 'label'
     const flattenRepodata = (data) => {
         const flattenPackages = (packages) => {
             return Object.entries(packages).map(kvp => {
@@ -75,9 +76,18 @@
             });
     }
 
-    const fetchPkgs = async () => {
+    const getFetchJsonUrl = (label, subdir) => {
+        // label "main" is at the root of the index
+        label = label?.toLocaleLowerCase() === 'main' ? null : label;
+        if (!label) {
+            return `${subdir}/repodata.json`;
+        }
+        return `${LABEL_URL}/${label}/${subdir}/repodata.json`;
+    };
+
+    const fetchPkgs = async (label) => {
         let promises = SUBDIRS.map(subdir => 
-            fetch(`${subdir}/repodata.json`)
+            fetch(getFetchJsonUrl(label, subdir))
                 .then(response => response.text())
                 .then(data => JSON.parse(data))
                 .then(data => ({ [subdir]: flattenRepodata(data) }))
@@ -111,8 +121,16 @@
 </script>
 </head>
 <body>
-  <h1>rattler-index</h1>
-  <div x-data="{ pkgData: {} }" x-init="pkgData = await fetchPkgs()">
+<div x-data="{ pkgData: {}, label: 'main' }" x-init="pkgData = await fetchPkgs()">
+  <div style="display: flex; justify-content: space-between; align-items: center;">
+    <h1>rattler-index</h1>
+    <div>
+      <label for="labelInput" style="margin-right: 8px;">Label:</label>
+      <input id="labelInput" type="text" x-model="label" placeholder="main" style="margin-right: 8px;" />
+      <button @click="pkgData = await fetchPkgs(label)">GO</button>
+    </div>
+  </div>
+  <div>
   <template x-for="subdir in pkgData.subdirs">
     <div class="subdir" x-bind:id="subdir">
     <h2 x-text="subdir"></h2>
@@ -137,5 +155,6 @@
     </div>
   </template>
   </div>
+</div>
 </body>
 </html>
