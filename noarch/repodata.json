@@ -20,6 +20,57 @@
             "subdir": "noarch",
             "timestamp": 1746187802126,
             "version": "25.4.1"
+        },
+        "mappylib-24.12.1_1.conda": {
+            "arch": "noarch",
+            "build": "1",
+            "build_number": 1,
+            "depends": [
+                "geodatascience >=24.12.1,<25"
+            ],
+            "license": "Unlicense",
+            "md5": "b7f6c9d1e4f5a7b8c6d8e4f5a7b8c6d8",
+            "name": "mappylib",
+            "platform": "noarch",
+            "sha256": "e28d0838214c781bd13a312edd575fba75d9df7a2b538e6dfdacae1486e11ead",
+            "size": 777777,
+            "subdir": "noarch",
+            "timestamp": 1746187602126,
+            "version": "24.12.1"
+        },
+        "cartolib-1.0.0_6.conda": {
+            "arch": "noarch",
+            "build": "6",
+            "build_number": 6,
+            "depends": [
+                "geopandas"
+            ],
+            "license": "Unlicense",
+            "md5": "b7f6c9d1e4f5a7b8c6d8e4f5a7b8c6d8",
+            "name": "cartolib",
+            "platform": "noarch",
+            "sha256": "e28d0838214c781bd13a312edd575fba75d9df7a2b538e6dfdacae1486e11ead",
+            "size": 3999888,
+            "subdir": "noarch",
+            "timestamp": 1746167302126,
+            "version": "1.0.0"
+        },
+        "cartolib-1.0.0_0.conda": {
+            "arch": "noarch",
+            "build": "0",
+            "build_number": 0,
+            "depends": [
+                "geopandas"
+            ],
+            "license": "Unlicense",
+            "md5": "b7f6c9d1e4f5a7b8c6d8e4f5a7b8c6d8",
+            "name": "cartolib",
+            "platform": "noarch",
+            "sha256": "e28d0838214c781bd13a312edd575fba75d9df7a2b538e6dfdacae1486e11ead",
+            "size": 3999888,
+            "subdir": "noarch",
+            "timestamp": 1746167402126,
+            "version": "1.0.0"
         }
     }
 }
