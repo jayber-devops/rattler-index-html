@@ -59,9 +59,6 @@
                 const aValue = a[key] || '';
                 const bValue = b[key] || '';
                 if (numeric) {
-                  return desc ? (bValue - aValue) : (aValue - bValue);
-                }
-                if (numeric) {
                   const aNum = parseFloat(aValue) || 0;
                   const bNum = parseFloat(bValue) || 0;
                   return desc ? (bNum - aNum) : (aNum - bNum);
